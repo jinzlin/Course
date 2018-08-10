@@ -14,5 +14,6 @@ class App : Application() {
         super.onCreate()
 
         DBManager.init(this, "course-db")
+
     }
 }
