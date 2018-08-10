@@ -6,11 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <WebView
-        android:id="@+id/WebView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
-    </WebView>
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vpMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/ctMain"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.flyco.tablayout.CommonTabLayout
+
+        android:id="@+id/ctMain"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:background="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:tl_iconHeight="24dp"
+        app:tl_iconWidth="24dp"
+        app:tl_indicator_color="@color/colorPrimary"
+        app:tl_indicator_height="0dp"
+        app:tl_textSelectColor="@color/colorPrimary"
+        app:tl_textUnselectColor="@color/colorPrimary"
+        app:tl_textsize="12sp" />
 
 </android.support.constraint.ConstraintLayout>

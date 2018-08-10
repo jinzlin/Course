@@ -1,4 +1,4 @@
-package com.lin.course.ui.home
+package com.lin.course.adapter
 
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder

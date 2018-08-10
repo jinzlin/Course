@@ -30,6 +30,7 @@ public class CourseEntityDao extends AbstractDao<CourseEntity, Long> {
         public final static Property CourseName2 = new Property(3, String.class, "courseName2", false, "COURSE_NAME2");
         public final static Property Title = new Property(4, String.class, "title", false, "TITLE");
         public final static Property Link = new Property(5, String.class, "link", false, "LINK");
+        public final static Property Body = new Property(6, String.class, "body", false, "BODY");
     }
 
 
@@ -50,7 +51,8 @@ public class CourseEntityDao extends AbstractDao<CourseEntity, Long> {
                 "\"COURSE_NAME\" TEXT," + // 2: courseName
                 "\"COURSE_NAME2\" TEXT," + // 3: courseName2
                 "\"TITLE\" TEXT," + // 4: title
-                "\"LINK\" TEXT);"); // 5: link
+                "\"LINK\" TEXT," + // 5: link
+                "\"BODY\" TEXT);"); // 6: body
     }
 
     /** Drops the underlying database table. */
@@ -92,6 +94,11 @@ public class CourseEntityDao extends AbstractDao<CourseEntity, Long> {
         if (link != null) {
             stmt.bindString(6, link);
         }
+ 
+        String body = entity.getBody();
+        if (body != null) {
+            stmt.bindString(7, body);
+        }
     }
 
     @Override
@@ -127,6 +134,11 @@ public class CourseEntityDao extends AbstractDao<CourseEntity, Long> {
         if (link != null) {
             stmt.bindString(6, link);
         }
+ 
+        String body = entity.getBody();
+        if (body != null) {
+            stmt.bindString(7, body);
+        }
     }
 
     @Override
@@ -142,7 +154,8 @@ public class CourseEntityDao extends AbstractDao<CourseEntity, Long> {
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // courseName
             cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // courseName2
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // title
-            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // link
+            cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5), // link
+            cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6) // body
         );
         return entity;
     }
@@ -155,6 +168,7 @@ public class CourseEntityDao extends AbstractDao<CourseEntity, Long> {
         entity.setCourseName2(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setTitle(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setLink(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
+        entity.setBody(cursor.isNull(offset + 6) ? null : cursor.getString(offset + 6));
      }
     
     @Override

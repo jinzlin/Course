@@ -18,20 +18,23 @@ public class CourseEntity {
     private String courseName2;
     private String title;
     private String link;
+    private String body;
 
-    @Generated(hash = 438357390)
+
+    @Generated(hash = 483818505)
+    public CourseEntity() {
+    }
+
+    @Generated(hash = 1156180968)
     public CourseEntity(Long id, String type, String courseName, String courseName2,
-            String title, String link) {
+            String title, String link, String body) {
         this.id = id;
         this.type = type;
         this.courseName = courseName;
         this.courseName2 = courseName2;
         this.title = title;
         this.link = link;
-    }
-
-    @Generated(hash = 483818505)
-    public CourseEntity() {
+        this.body = body;
     }
 
     public Long getId() {
@@ -80,5 +83,13 @@ public class CourseEntity {
 
     public void setLink(String link) {
         this.link = link;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 }

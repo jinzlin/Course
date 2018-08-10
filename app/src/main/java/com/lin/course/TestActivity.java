@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.lin.course.db.entity.CourseTypeEntity;
-import com.lin.course.ui.home.HomeCourseTypeAdapter;
+import com.lin.course.adapter.HomeCourseTypeAdapter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,7 +25,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.fragment_home);
 
         recyclerView = findViewById(R.id.rv_home);
 
