@@ -46,7 +46,6 @@ class DateManager {
                 val i1 = elements0.select("h2")
 
                 val size = i0.size + i1.size
-                elements0.
                 val list = elements0.eachText()
                 for (i in list.indices) {
                     Log.e("getCourseData-------", "--" + list[i] + "---" + list.size+ "---" + i)
