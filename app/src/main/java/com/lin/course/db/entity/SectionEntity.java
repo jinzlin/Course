@@ -9,32 +9,36 @@ import org.greenrobot.greendao.annotation.Generated;
  * PS:
  */
 @Entity
-public class CourseEntity {
+public class SectionEntity {
 
     @Id(autoincrement = true)
     private Long id;
-    private String type;
+    private String chapterName;
     private String courseName;
-    private String courseName2;
     private String title;
     private String link;
     private String body;
 
-
-    @Generated(hash = 483818505)
-    public CourseEntity() {
-    }
-
-    @Generated(hash = 1156180968)
-    public CourseEntity(Long id, String type, String courseName, String courseName2,
-            String title, String link, String body) {
-        this.id = id;
-        this.type = type;
+    public SectionEntity(String chapterName, String courseName, String title, String link, String body) {
+        this.chapterName = chapterName;
         this.courseName = courseName;
-        this.courseName2 = courseName2;
         this.title = title;
         this.link = link;
         this.body = body;
+    }
+
+    @Generated(hash = 527172802)
+    public SectionEntity(Long id, String chapterName, String courseName, String title, String link, String body) {
+        this.id = id;
+        this.chapterName = chapterName;
+        this.courseName = courseName;
+        this.title = title;
+        this.link = link;
+        this.body = body;
+    }
+
+    @Generated(hash = 1413967982)
+    public SectionEntity() {
     }
 
     public Long getId() {
@@ -45,12 +49,12 @@ public class CourseEntity {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public String getChapterName() {
+        return chapterName;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName;
     }
 
     public String getCourseName() {
@@ -59,14 +63,6 @@ public class CourseEntity {
 
     public void setCourseName(String courseName) {
         this.courseName = courseName;
-    }
-
-    public String getCourseName2() {
-        return courseName2;
-    }
-
-    public void setCourseName2(String courseName2) {
-        this.courseName2 = courseName2;
     }
 
     public String getTitle() {
@@ -91,5 +87,17 @@ public class CourseEntity {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    @Override
+    public String toString() {
+        return "SectionEntity{" +
+                "id=" + id +
+                ", chapterName='" + chapterName + '\'' +
+                ", courseName='" + courseName + '\'' +
+                ", title='" + title + '\'' +
+                ", link='" + link + '\'' +
+                ", body='" + body + '\'' +
+                '}';
     }
 }

@@ -25,9 +25,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
      */
     public static class Properties {
         public final static Property Id = new Property(0, Long.class, "id", true, "_id");
-        public final static Property CourseTitle = new Property(1, String.class, "courseTitle", false, "COURSE_TITLE");
+        public final static Property CourseName = new Property(1, String.class, "courseName", false, "COURSE_NAME");
         public final static Property CourseContent = new Property(2, String.class, "courseContent", false, "COURSE_CONTENT");
-        public final static Property CourseType = new Property(3, String.class, "courseType", false, "COURSE_TYPE");
+        public final static Property ChapterName = new Property(3, String.class, "chapterName", false, "CHAPTER_NAME");
         public final static Property CourseLink = new Property(4, String.class, "courseLink", false, "COURSE_LINK");
         public final static Property CourseImg = new Property(5, String.class, "courseImg", false, "COURSE_IMG");
     }
@@ -46,9 +46,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
         String constraint = ifNotExists? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"COURSE_LIST_ENTITY\" (" + //
                 "\"_id\" INTEGER PRIMARY KEY AUTOINCREMENT ," + // 0: id
-                "\"COURSE_TITLE\" TEXT UNIQUE ," + // 1: courseTitle
+                "\"COURSE_NAME\" TEXT UNIQUE ," + // 1: courseName
                 "\"COURSE_CONTENT\" TEXT," + // 2: courseContent
-                "\"COURSE_TYPE\" TEXT," + // 3: courseType
+                "\"CHAPTER_NAME\" TEXT," + // 3: chapterName
                 "\"COURSE_LINK\" TEXT," + // 4: courseLink
                 "\"COURSE_IMG\" TEXT);"); // 5: courseImg
     }
@@ -68,9 +68,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
             stmt.bindLong(1, id);
         }
  
-        String courseTitle = entity.getCourseTitle();
-        if (courseTitle != null) {
-            stmt.bindString(2, courseTitle);
+        String courseName = entity.getCourseName();
+        if (courseName != null) {
+            stmt.bindString(2, courseName);
         }
  
         String courseContent = entity.getCourseContent();
@@ -78,9 +78,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
             stmt.bindString(3, courseContent);
         }
  
-        String courseType = entity.getCourseType();
-        if (courseType != null) {
-            stmt.bindString(4, courseType);
+        String chapterName = entity.getChapterName();
+        if (chapterName != null) {
+            stmt.bindString(4, chapterName);
         }
  
         String courseLink = entity.getCourseLink();
@@ -103,9 +103,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
             stmt.bindLong(1, id);
         }
  
-        String courseTitle = entity.getCourseTitle();
-        if (courseTitle != null) {
-            stmt.bindString(2, courseTitle);
+        String courseName = entity.getCourseName();
+        if (courseName != null) {
+            stmt.bindString(2, courseName);
         }
  
         String courseContent = entity.getCourseContent();
@@ -113,9 +113,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
             stmt.bindString(3, courseContent);
         }
  
-        String courseType = entity.getCourseType();
-        if (courseType != null) {
-            stmt.bindString(4, courseType);
+        String chapterName = entity.getChapterName();
+        if (chapterName != null) {
+            stmt.bindString(4, chapterName);
         }
  
         String courseLink = entity.getCourseLink();
@@ -138,9 +138,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
     public CourseListEntity readEntity(Cursor cursor, int offset) {
         CourseListEntity entity = new CourseListEntity( //
             cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0), // id
-            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // courseTitle
+            cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1), // courseName
             cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2), // courseContent
-            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // courseType
+            cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3), // chapterName
             cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4), // courseLink
             cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5) // courseImg
         );
@@ -150,9 +150,9 @@ public class CourseListEntityDao extends AbstractDao<CourseListEntity, Long> {
     @Override
     public void readEntity(Cursor cursor, CourseListEntity entity, int offset) {
         entity.setId(cursor.isNull(offset + 0) ? null : cursor.getLong(offset + 0));
-        entity.setCourseTitle(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
+        entity.setCourseName(cursor.isNull(offset + 1) ? null : cursor.getString(offset + 1));
         entity.setCourseContent(cursor.isNull(offset + 2) ? null : cursor.getString(offset + 2));
-        entity.setCourseType(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
+        entity.setChapterName(cursor.isNull(offset + 3) ? null : cursor.getString(offset + 3));
         entity.setCourseLink(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
         entity.setCourseImg(cursor.isNull(offset + 5) ? null : cursor.getString(offset + 5));
      }

@@ -1,8 +1,8 @@
-package com.lin.course.entity
+package com.lin.course.bean.pojo
 
 import com.flyco.tablayout.listener.CustomTabEntity
 
-class TabEntiy(private val title: String, private val selectedIcon: Int, private val unSelectedIcon: Int) : CustomTabEntity {
+class TabPojo(private val title: String, private val selectedIcon: Int, private val unSelectedIcon: Int) : CustomTabEntity {
 
     override fun getTabTitle(): String {
         return title

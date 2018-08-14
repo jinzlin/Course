@@ -30,7 +30,8 @@
         </activity>
         <activity android:name=".TestActivity" />
         <activity android:name=".ui.CourseListActivity" />
-        <activity android:name=".ui.CourseActivity"></activity>
+        <activity android:name=".ui.SectionListActivity" />
+        <activity android:name=".ui.ContentActivity"></activity>
     </application>
 
 </manifest>

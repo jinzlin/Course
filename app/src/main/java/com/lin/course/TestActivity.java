@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
-import com.lin.course.db.entity.CourseTypeEntity;
-import com.lin.course.adapter.HomeCourseTypeAdapter;
+import com.lin.course.db.entity.ChapterEntity;
+import com.lin.course.adapter.ChapterAdapter;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -29,15 +29,15 @@ public class TestActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_home);
 
-        List<CourseTypeEntity> list = new ArrayList<>();
+        List<ChapterEntity> list = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            CourseTypeEntity courseTypeEntity;
-            list.add(new CourseTypeEntity(""));
+            ChapterEntity chapterEntity;
+            list.add(new ChapterEntity(""));
         }
 
-        HomeCourseTypeAdapter homeCourseTypeAdapter;
-//        homeCourseTypeAdapter = new HomeCourseTypeAdapter(list);
-//        recyclerView.setAdapter(homeCourseTypeAdapter);
+        ChapterAdapter chapterAdapter;
+//        chapterAdapter = new ChapterAdapter(list);
+//        recyclerView.setAdapter(chapterAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 

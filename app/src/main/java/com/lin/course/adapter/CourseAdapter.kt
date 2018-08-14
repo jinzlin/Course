@@ -10,10 +10,10 @@ import com.lin.course.db.entity.CourseListEntity
  * Author by ljz
  * PS:
  */
-class CourseListAdapter(data: MutableList<CourseListEntity>?) : BaseQuickAdapter<CourseListEntity, BaseViewHolder>(R.layout.item_course_list, data) {
+class CourseAdapter(data: MutableList<CourseListEntity>?) : BaseQuickAdapter<CourseListEntity, BaseViewHolder>(R.layout.item_course, data) {
 
     override fun convert(helper: BaseViewHolder, item: CourseListEntity) {
-        helper.setText(R.id.tvCourseTitle, item.courseTitle)
+        helper.setText(R.id.tvCourseTitle, item.courseName)
                 .setText(R.id.tvCourseContent, item.courseContent)
         Glide.with(mContext).load(item.courseImg).into(helper.getView(R.id.ivCourse))
     }

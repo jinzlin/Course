@@ -15,34 +15,37 @@ public class CourseListEntity {
     @Id(autoincrement = true)
     private Long id;
     @Unique
-    private String courseTitle;
+    private String courseName;
     private String courseContent;
-    private String courseType;
+    private String chapterName;
     private String courseLink;
     private String courseImg;
 
-    public CourseListEntity(String courseTitle, String courseContent, String courseType, String courseLink, String courseImg) {
-        this.courseTitle = courseTitle;
+    public CourseListEntity(String courseName, String courseContent, String chapterName, String courseLink, String courseImg) {
+        this.courseName = courseName;
         this.courseContent = courseContent;
-        this.courseType = courseType;
+        this.chapterName = chapterName;
         this.courseLink = courseLink;
         this.courseImg = courseImg;
     }
 
-    @Generated(hash = 531830211)
-    public CourseListEntity(Long id, String courseTitle, String courseContent,
-            String courseType, String courseLink, String courseImg) {
+
+    @Generated(hash = 1305087935)
+    public CourseListEntity(Long id, String courseName, String courseContent, String chapterName, String courseLink,
+            String courseImg) {
         this.id = id;
-        this.courseTitle = courseTitle;
+        this.courseName = courseName;
         this.courseContent = courseContent;
-        this.courseType = courseType;
+        this.chapterName = chapterName;
         this.courseLink = courseLink;
         this.courseImg = courseImg;
     }
+
 
     @Generated(hash = 1221559686)
     public CourseListEntity() {
     }
+
 
     public Long getId() {
         return id;
@@ -52,12 +55,12 @@ public class CourseListEntity {
         this.id = id;
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
+    public String getCourseName() {
+        return courseName;
     }
 
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getCourseContent() {
@@ -68,12 +71,12 @@ public class CourseListEntity {
         this.courseContent = courseContent;
     }
 
-    public String getCourseType() {
-        return courseType;
+    public String getChapterName() {
+        return chapterName;
     }
 
-    public void setCourseType(String courseType) {
-        this.courseType = courseType;
+    public void setChapterName(String chapterName) {
+        this.chapterName = chapterName;
     }
 
     public String getCourseLink() {
@@ -96,9 +99,9 @@ public class CourseListEntity {
     public String toString() {
         return "CourseListEntity{" +
                 "id=" + id +
-                ", courseTitle='" + courseTitle + '\'' +
+                ", courseName='" + courseName + '\'' +
                 ", courseContent='" + courseContent + '\'' +
-                ", courseType='" + courseType + '\'' +
+                ", chapterName='" + chapterName + '\'' +
                 ", courseLink='" + courseLink + '\'' +
                 ", courseImg='" + courseImg + '\'' +
                 '}';

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
-import com.lin.course.entity.TabEntiy
+import com.lin.course.bean.pojo.TabPojo
 import com.lin.course.ui.home.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), OnTabSelectListener, ViewPager.OnPageC
         val mTabEntities = ArrayList<CustomTabEntity>()
 
         for (i in mTitles.indices) {
-            mTabEntities.add(TabEntiy(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]))
+            mTabEntities.add(TabPojo(mTitles[i], mIconSelectIds[i], mIconUnselectIds[i]))
         }
         ctMain.setTabData(mTabEntities)
         ctMain.hideMsg(1)
