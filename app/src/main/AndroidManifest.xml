@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
+
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -29,9 +31,12 @@
             <!-- </intent-filter> -->
         </activity>
         <activity android:name=".TestActivity" />
-        <activity android:name=".ui.CourseListActivity" />
+        <activity android:name=".ui.ChapterActivity" />
         <activity android:name=".ui.SectionListActivity" />
-        <activity android:name=".ui.ContentActivity"></activity>
+        <activity android:name=".ui.ContentActivity" />
+        <activity android:name=".ui.SlideableSpotAdActivity"/>
+
+
     </application>
 
 </manifest>

@@ -82,7 +82,9 @@ class DataManager {
                             title = list[i]
                         }
                     }
-                    val body = document.select(".article-body").outerHtml()
+                    // 去除自动生成换行符"\n"
+                    document.outputSettings().prettyPrint(false)
+                    val body = document.body().select(".article-body").html()
                     DBManager.instance!!.updataSectionLink(SectionEntity(chapterName, courseName, title, link, body))
 
                     it.onNext(dbModel)
@@ -94,25 +96,31 @@ class DataManager {
             return sectionList
         }
 
-        fun getBodyData(link: String): String? {
-            try {
-                Log.e("body--link", link)
-                val sectionEntity = DBManager.instance!!.seekSection(link)
-                Log.e("body--", sectionEntity?.toString())
-                if (!TextUtils.isEmpty(sectionEntity?.body)) {
-                    Log.e("body--", sectionEntity!!.body)
-                    return sectionEntity!!.body
-                }
-                val document = Jsoup.connect("https://www.runoob.com$link").get()
-                val body = document.select(".article-body").outerHtml()
-
-                Log.e("body--body", body)
-                if (sectionEntity != null) {
-                    DBManager.instance!!.updataSectionLink(SectionEntity(sectionEntity.id, sectionEntity.chapterName, sectionEntity.courseName, sectionEntity.title, link, body))
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
+        fun getBodyData(rxDbCallback: RxDbCallback<DbModel>, link: String): String? {
+            val sectionEntity = DBManager.instance!!.seekSection(link)
+            if (!TextUtils.isEmpty(sectionEntity?.body)) {
+                return sectionEntity!!.body
             }
+
+            rxJavaDb(rxDbCallback, ObservableOnSubscribe {
+                try {
+                    val dbModel = DbModel()
+                    val document = Jsoup.connect("https://www.runoob.com$link").get()
+                    // 去除自动生成换行符"\n"
+                    document.outputSettings().prettyPrint(false)
+                    val body = document.select(".article-body").html()
+
+                    if (sectionEntity != null) {
+                        sectionEntity.link = link
+                        sectionEntity.body = body
+                        DBManager.instance!!.updataSectionLink(sectionEntity)
+                        dbModel.sectionEntity = sectionEntity
+                    }
+                    it.onNext(dbModel)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            })
             return null
         }
 

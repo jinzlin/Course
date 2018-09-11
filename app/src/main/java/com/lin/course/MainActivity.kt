@@ -4,12 +4,21 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
+import android.util.Log
 import com.flyco.tablayout.listener.CustomTabEntity
 import com.flyco.tablayout.listener.OnTabSelectListener
+import com.githang.statusbar.StatusBarCompat
 import com.lin.course.bean.pojo.TabPojo
 import com.lin.course.ui.home.HomeFragment
+import com.lin.course.ui.my.MyFragment
+import com.lin.course.ui.study.StudyFragment
 import kotlinx.android.synthetic.main.activity_main.*
+import wer.xds.fds.AdManager
+import wer.xds.fds.nm.cm.ErrorCode
+import wer.xds.fds.nm.sp.SpotManager
+import wer.xds.fds.nm.sp.SpotRequestListener
 
 /**
  * Author by ljz
@@ -21,16 +30,15 @@ class MainActivity : AppCompatActivity(), OnTabSelectListener, ViewPager.OnPageC
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         initCommonTabLayout()
-
     }
 
     private fun initCommonTabLayout() {
+
         val mTabs = ArrayList<Fragment>()
-        val mTitles = arrayOf(getString(R.string.main_home), getString(R.string.main_my))
-        val mIconUnselectIds = intArrayOf(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
-        val mIconSelectIds = intArrayOf(R.mipmap.ic_launcher, R.mipmap.ic_launcher)
+        val mTitles = arrayOf(getString(R.string.main_home), getString(R.string.main_study), getString(R.string.main_my))
+        val mIconSelectIds = intArrayOf(R.mipmap.ic_home_select_o, R.mipmap.ic_study_select_o,R.mipmap.ic_my_select_o)
+        val mIconUnselectIds = intArrayOf(R.mipmap.ic_home_unselect_o, R.mipmap.ic_study_unselect_o,R.mipmap.ic_my_unselect_o)
         val mTabEntities = ArrayList<CustomTabEntity>()
 
         for (i in mTitles.indices) {
@@ -43,7 +51,8 @@ class MainActivity : AppCompatActivity(), OnTabSelectListener, ViewPager.OnPageC
         vpMain.addOnPageChangeListener(this)
 
         mTabs.add(HomeFragment())
-        mTabs.add(HomeFragment())
+        mTabs.add(StudyFragment())
+        mTabs.add(MyFragment())
 
         vpMain.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
             override fun getItem(p0: Int): Fragment {

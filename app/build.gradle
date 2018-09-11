@@ -12,6 +12,12 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+//        compileSdkVersion 24
+        // 指定支持的so架构
+        ndk {
+            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
     }
     buildTypes {
         release {
@@ -25,6 +31,7 @@ android {
         daoPackage 'com.lin.course.db.gen'
         targetGenDir 'src/main/java'
     }
+
 }
 
 dependencies {
@@ -32,6 +39,8 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0-rc01'
     implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    implementation 'com.android.support:support-v4:28.0.0-rc01'
+    implementation 'com.android.support:support-vector-drawable:28.0.0-rc01'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
@@ -44,8 +53,14 @@ dependencies {
     implementation 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar'
     // 图片加载库
     implementation 'com.github.bumptech.glide:glide:4.6.1'
-
     implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
+    // 状态栏工具类
+    implementation 'com.githang:status-bar-compat:0.7'
+    implementation 'com.youth.banner:banner:1.4.10'
+    // 图片加载库
+    implementation 'com.github.bumptech.glide:glide:4.6.1'
+    implementation 'com.android.support:design:28.0.0-rc01'
 }

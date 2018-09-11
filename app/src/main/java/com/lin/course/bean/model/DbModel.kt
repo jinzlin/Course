@@ -8,9 +8,9 @@ import com.lin.course.db.entity.SectionEntity
  * Author by ljz
  * PS:
  */
-class DbModel(val chapterEntity: ChapterEntity?,
-              val courseListEntity: CourseListEntity?,
-              val sectionEntity: SectionEntity?,
+class DbModel(var chapterEntity: ChapterEntity?,
+              var courseListEntity: CourseListEntity?,
+              var sectionEntity: SectionEntity?,
               val chapterList: ArrayList<ChapterEntity>,
               val courseList: ArrayList<CourseListEntity>,
               val sectionList: ArrayList<SectionEntity>) {

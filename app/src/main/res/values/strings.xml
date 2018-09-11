@@ -3,5 +3,8 @@
 
 
     <string name="main_home">首页</string>
+    <string name="main_study">学习</string>
     <string name="main_my">我的</string>
+    <string name="allSection">全部课程</string>
+
 </resources>

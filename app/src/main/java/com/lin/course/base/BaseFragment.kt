@@ -1,10 +1,15 @@
 package com.lin.course.base
 
+import android.app.ProgressDialog
+import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.githang.statusbar.StatusBarCompat
+import com.lin.course.R
 import com.lin.course.bean.model.DbModel
 import io.reactivex.disposables.Disposable
 
@@ -13,6 +18,8 @@ import io.reactivex.disposables.Disposable
  * PS:
  */
 abstract class BaseFragment: Fragment(), RxDbCallback<DbModel>{
+
+    lateinit var progressDialog : ProgressDialog
 
     abstract fun initResource() : Int
 
@@ -25,7 +32,8 @@ abstract class BaseFragment: Fragment(), RxDbCallback<DbModel>{
     }
 
     override fun onDbStart(tag : Int, d: Disposable) {
-
+        progressDialog = ProgressDialog(activity)
+        progressDialog.show()
     }
 
     override fun onDbSuccess(tag : Int, t: DbModel) {
@@ -37,6 +45,6 @@ abstract class BaseFragment: Fragment(), RxDbCallback<DbModel>{
     }
 
     override fun onDbComplete(tag : Int) {
-
+        progressDialog.dismiss()
     }
 }
